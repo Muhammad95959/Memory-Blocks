@@ -1,86 +1,86 @@
 [
   {
     "id": 1,
-    "path": "/images/ambulance.png"
+    "path": "images/ambulance.png"
   },
   {
     "id": 2,
-    "path": "/images/bulldozer.png"
+    "path": "images/bulldozer.png"
   },
   {
     "id": 3,
-    "path": "/images/car.png"
+    "path": "images/car.png"
   },
   {
     "id": 4,
-    "path": "/images/cargo-boat.png"
+    "path": "images/cargo-boat.png"
   },
   {
     "id": 5,
-    "path": "/images/dump-truck.png"
+    "path": "images/dump-truck.png"
   },
   {
     "id": 6,
-    "path": "/images/dumper.png"
+    "path": "images/dumper.png"
   },
   {
     "id": 7,
-    "path": "/images/electric-car.png"
+    "path": "images/electric-car.png"
   },
   {
     "id": 8,
-    "path": "/images/front-loader.png"
+    "path": "images/front-loader.png"
   },
   {
     "id": 9,
-    "path": "/images/jet-ski.png"
+    "path": "images/jet-ski.png"
   },
   {
     "id": 10,
-    "path": "/images/microcar.png"
+    "path": "images/microcar.png"
   },
   {
     "id": 11,
-    "path": "/images/military-vehicle.png"
+    "path": "images/military-vehicle.png"
   },
   {
     "id": 12,
-    "path": "/images/motorbike.png"
+    "path": "images/motorbike.png"
   },
   {
     "id": 13,
-    "path": "/images/pick-up-truck.png"
+    "path": "images/pick-up-truck.png"
   },
   {
     "id": 14,
-    "path": "/images/police-car.png"
+    "path": "images/police-car.png"
   },
   {
     "id": 15,
-    "path": "/images/rocket.png"
+    "path": "images/rocket.png"
   },
   {
     "id": 16,
-    "path": "/images/shipped.png"
+    "path": "images/shipped.png"
   },
   {
     "id": 17,
-    "path": "/images/sportive-car.png"
+    "path": "images/sportive-car.png"
   },
   {
     "id": 18,
-    "path": "/images/tank.png"
+    "path": "images/tank.png"
   },
   {
     "id": 19,
-    "path": "/images/truck.png"
+    "path": "images/truck.png"
   },
   {
     "id": 20,
-    "path": "/images/trucks.png"
+    "path": "images/trucks.png"
   },
   {
     "id": 21,
-    "path": "/images/waste.png"
+    "path": "images/waste.png"
   }
 ]
