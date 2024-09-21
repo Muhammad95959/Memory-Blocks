@@ -37,6 +37,9 @@ body {
   font-weight: 600;
   background-color: var(--crust);
   color: var(--text);
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 1s;
 }
 .container {
   position: relative;
@@ -50,6 +53,85 @@ body {
   }
   @media (min-width: 992px) {
     width: 970px;
+  }
+}
+
+.overlay-screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-color: rgba(36, 39, 58, 0.9);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .difficulty {
+    margin-bottom: 40px;
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    > div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      gap: 25px;
+      a {
+        color: var(--crust);
+        width: 90px;
+        height: 35px;
+        border-radius: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 16px;
+        opacity: 0.6;
+        cursor: pointer;
+      }
+      .easy {
+        background-color: var(--green);
+      }
+      .medium {
+        background-color: var(--yellow);
+      }
+      .hard {
+        background-color: var(--red);
+      }
+      .selected {
+        transition: opacity 0.5s;
+        opacity: 1;
+      }
+    }
+  }
+  .player-name {
+    margin-bottom: 40px;
+    font-size: 20px;
+    input {
+      outline: none;
+      border: 2px solid var(--mauve);
+      border-radius: 8px;
+      width: 320px;
+      height: 40px;
+      padding: 10px;
+      font-size: 24px;
+      color: var(--text);
+      background-color: rgba(54, 58, 79, 0.7);
+      text-align: center;
+      &::placeholder {
+        color: var(--surface-2);
+      }
+    }
+  }
+  .start-btn {
+    background-color: var(--sky);
+    color: var(--crust);
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
   }
 }
 
@@ -76,9 +158,23 @@ body {
       justify-content: center;
       display: grid;
       gap: 15px;
-      grid-template-columns: repeat(5, 1fr);
-      @media (max-width: 768px) {
+      &.level-1 {
         grid-template-columns: repeat(4, 1fr);
+        @media (max-width: 768px) {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+      &.level-2 {
+        grid-template-columns: repeat(5, 1fr);
+        @media (max-width: 768px) {
+          grid-template-columns: repeat(4, 1fr);
+        }
+      }
+      &.level-3 {
+        grid-template-columns: repeat(6, 1fr);
+        @media (max-width: 768px) {
+          grid-template-columns: repeat(5, 1fr);
+        }
       }
       [class*="card-"] {
         position: relative;
@@ -95,6 +191,9 @@ body {
           transform: rotateY(180deg);
         }
         &.is-matched {
+          transform: rotateY(180deg);
+        }
+        &.is-unflipping {
           transform: rotateY(180deg);
         }
         .back,
