@@ -26,14 +26,8 @@ fetch("database/images.json")
     const randomImagesObjArr = getRandomImages(imagesObjArr);
     setupOverlayScreen(imagesObjArr);
     setupCardsBox(randomImagesObjArr);
+    setupResultMessageBtns();
   });
-
-window.transitionToPage = function (href) {
-  document.querySelector("body").style.opacity = 0;
-  setTimeout(function () {
-    window.location.href = href;
-  }, 300);
-};
 
 function setupOverlayScreen(imagesObjArr) {
   [...difficultyBtns].forEach((btn, index) => {
@@ -146,10 +140,19 @@ function checkEndGame() {
       Math.floor(score);
     resultMessage.style.visibility = "visible";
     resultMessage.style.opacity = "100%";
-    resultCloseBtn.onclick = () => {
-      resultMessage.style.opacity = 0;
-      setTimeout(() => resultMessage.remove(), 500);
-    };
-    playAgainBtn.onclick = () => window.location.reload();
   }
+}
+
+function setupResultMessageBtns() {
+  resultCloseBtn.onclick = () => {
+    resultMessage.style.opacity = 0;
+    setTimeout(() => resultMessage.remove(), 500);
+  };
+  highScoresBtn.onclick = () => {
+    document.body.style.opacity = 0;
+    setTimeout(() => {
+      window.location.href = "/high-scores.html";
+    }, 300);
+  };
+  playAgainBtn.onclick = () => window.location.reload();
 }

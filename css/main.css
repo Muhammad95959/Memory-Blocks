@@ -55,6 +55,19 @@ body {
     width: 970px;
   }
 }
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background-color: var(--base);
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--text);
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--subtext-0);
+}
 a {
   text-decoration: none;
 }
@@ -299,7 +312,54 @@ a {
 }
 
 .high-scores {
-  h2 {
-    color: var(--text);
+  margin-top: 40px;
+  > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    h2 {
+      margin-bottom: 20px;
+      color: var(--crust);
+      width: 120px;
+      padding: 8px 0;
+      text-align: center;
+      position: relative;
+    }
+    &.easy h2 {
+      background-color: var(--green);
+    }
+    &.medium h2 {
+      background-color: var(--yellow);
+    }
+    &.hard h2 {
+      background-color: var(--red);
+    }
+    .scores {
+      margin-bottom: 40px;
+      text-align: center;
+      border: 2px solid var(--text);
+      border-collapse: collapse;
+      max-width: 100%;
+      th,
+      td {
+        padding: 15px;
+        border: 2px solid var(--text);
+      }
+      .rank {
+        color: var(--lavender);
+      }
+      .name {
+        color: var(--mauve);
+        @media (min-width: 768px) {
+          min-width: 200px;
+        }
+      }
+      .score {
+        color: var(--rosewater);
+        @media (min-width: 768px) {
+          min-width: 200px;
+        }
+      }
+    }
   }
 }
