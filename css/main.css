@@ -39,7 +39,7 @@ body {
   color: var(--text);
   visibility: hidden;
   opacity: 0;
-  transition: opacity 0.5s linear;
+  transition: opacity 0.3s linear;
 }
 .container {
   position: relative;
@@ -71,6 +71,7 @@ a {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  display: none;
   .difficulty {
     margin-bottom: 40px;
     h2 {
