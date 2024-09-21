@@ -39,7 +39,7 @@ body {
   color: var(--text);
   visibility: hidden;
   opacity: 0;
-  transition: opacity 1s;
+  transition: opacity 0.5s linear;
 }
 .container {
   position: relative;
@@ -166,7 +166,7 @@ a {
   justify-content: center;
   display: grid;
   gap: 15px;
-  transition: opacity 0.5s;
+  transition: opacity 0.3s linear;
   &.level-1 {
     grid-template-columns: repeat(4, 1fr);
     @media (max-width: 768px) {
@@ -230,8 +230,8 @@ a {
 }
 
 .result-message {
-  visibility: hidden;
-  opacity: 0;
+  /*visibility: hidden;*/
+  /*opacity: 0;*/
   transition: opacity 0.5s;
   position: absolute;
   top: 50%;
@@ -294,5 +294,11 @@ a {
         border-radius: 8px;
       }
     }
+  }
+}
+
+.high-scores {
+  h2 {
+    color: var(--text);
   }
 }

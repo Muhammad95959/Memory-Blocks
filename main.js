@@ -28,6 +28,13 @@ fetch("database/images.json")
     setupCardsBox(randomImagesObjArr);
   });
 
+window.transitionToPage = function (href) {
+  document.querySelector("body").style.opacity = 0;
+  setTimeout(function () {
+    window.location.href = href;
+  }, 500);
+};
+
 function setupOverlayScreen(imagesObjArr) {
   [...difficultyBtns].forEach((btn, index) => {
     btn.onclick = () => {
@@ -42,7 +49,7 @@ function setupOverlayScreen(imagesObjArr) {
         const randomImagesObjArr = getRandomImages(imagesObjArr);
         setupCardsBox(randomImagesObjArr);
         cardsBox.style.opacity = "100%";
-      }, 500);
+      }, 300);
     };
   });
   startBtn.onclick = () => {
@@ -135,7 +142,8 @@ function checkEndGame() {
     else if (wrongTries <= 19)
       score = maxScore - Math.pow(5, 5.6 + (wrongTries - 8) * 0.1);
     if (score < 0) score = 0;
-    document.querySelector(".result-message .score").textContent = Math.floor(score);
+    document.querySelector(".result-message .score").textContent =
+      Math.floor(score);
     resultMessage.style.visibility = "visible";
     resultMessage.style.opacity = "100%";
     resultCloseBtn.onclick = () => {
