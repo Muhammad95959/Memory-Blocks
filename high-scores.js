@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 const scores = JSON.parse(window.localStorage.score);
-console.log(scores);
 let level1Scores = [];
 let level2Scores = [];
 let level3Scores = [];
