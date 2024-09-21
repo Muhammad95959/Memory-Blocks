@@ -8,6 +8,7 @@ const resultCloseBtn = document.querySelector(".result-message .close-btn");
 const highScoresBtn = document.querySelector(".high-scores-btn");
 const playAgainBtn = document.querySelector(".play-again-btn");
 
+let playerName = "User";
 let level = 2;
 let cardsCount = 20;
 let cardsCountArr = [12, 20, 30];
@@ -47,9 +48,10 @@ function setupOverlayScreen(imagesObjArr) {
     };
   });
   startBtn.onclick = () => {
-    let name = nameInput.value;
-    if (!(name === null || name === ""))
-      document.querySelector(".top-info .name").textContent = name;
+    if (!(nameInput.value === null || nameInput.value === "")) {
+      playerName = nameInput.value;
+      document.querySelector(".top-info .name").textContent = playerName;
+    }
     overlayScreen.style.transition = "opacity 0.5s";
     overlayScreen.style.opacity = "0";
     setTimeout(() => overlayScreen.remove(), 500);
@@ -130,16 +132,27 @@ function increaseWrongTries() {
 
 function checkEndGame() {
   if (document.querySelectorAll(".is-matched").length === cardsCount) {
+    console.log("You Win!");
     if (wrongTries <= 5) score = maxScore - Math.pow(5, wrongTries);
     else if (wrongTries <= 8)
-      score = maxScore - Math.pow(5, 5 + (wrongTries - 5) * 0.2);
+      score = Math.floor(maxScore - Math.pow(5, 5 + (wrongTries - 5) * 0.2));
     else if (wrongTries <= 19)
-      score = maxScore - Math.pow(5, 5.6 + (wrongTries - 8) * 0.1);
+      score = Math.floor(maxScore - Math.pow(5, 5.6 + (wrongTries - 8) * 0.1));
     if (score < 0) score = 0;
     document.querySelector(".result-message .score").textContent =
       Math.floor(score);
     resultMessage.style.visibility = "visible";
     resultMessage.style.opacity = "100%";
+    const scoreObj = {
+      level: level,
+      name: playerName,
+      score: score,
+    };
+    if (window.localStorage.getItem("score") === null)
+      window.localStorage.setItem("score", "[]");
+    const scoreArr = JSON.parse(window.localStorage.getItem("score"));
+    scoreArr.push(scoreObj);
+    window.localStorage.setItem("score", JSON.stringify(scoreArr));
   }
 }
 
