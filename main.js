@@ -3,6 +3,10 @@ const difficultyBtns = document.querySelectorAll(".difficulty a");
 const nameInput = document.querySelector(".player-name input");
 const startBtn = document.querySelector(".start-btn");
 const cardsBox = document.querySelector(".cards-box");
+const resultMessage = document.querySelector(".result-message");
+const resultCloseBtn = document.querySelector(".result-message .close-btn");
+const highScoresBtn = document.querySelector(".high-scores-btn");
+const playAgainBtn = document.querySelector(".play-again-btn");
 
 let level = 2;
 let cardsCount = 20;
@@ -10,6 +14,9 @@ let cardsCountArr = [12, 20, 30];
 let flippedCardsCount = 0;
 let wrongTries = 0;
 let duration = 1000;
+let score = 0;
+let maxScoreArr = [25000, 50000, 100000];
+let maxScore = 50000;
 
 fetch("database/images.json")
   .then((r) => r.json())
@@ -26,11 +33,16 @@ function setupOverlayScreen(imagesObjArr) {
     btn.onclick = () => {
       [...difficultyBtns].forEach((b) => b.classList.remove("selected"));
       btn.classList.add("selected");
-      cardsBox.innerHTML = "";
-      level = index + 1;
-      cardsCount = cardsCountArr[level - 1];
-      const randomImagesObjArr = getRandomImages(imagesObjArr);
-      setupCardsBox(randomImagesObjArr);
+      cardsBox.style.opacity = 0;
+      setTimeout(() => {
+        cardsBox.innerHTML = "";
+        level = index + 1;
+        cardsCount = cardsCountArr[level - 1];
+        maxScore = maxScoreArr[level - 1];
+        const randomImagesObjArr = getRandomImages(imagesObjArr);
+        setupCardsBox(randomImagesObjArr);
+        cardsBox.style.opacity = "100%";
+      }, 500);
     };
   });
   startBtn.onclick = () => {
@@ -63,10 +75,9 @@ function getRandomImages(imagesObjArr) {
 
 function setupCardsBox(randomImagesObjArr) {
   [...randomImagesObjArr].forEach((imageObj, index) => {
-    const card = document.createElement("div");
-    cardsBox.appendChild(card);
-    cardsBox.classList = "";
     cardsBox.classList = `cards-box level-${level}`;
+    const card = document.createElement("a");
+    cardsBox.appendChild(card);
     card.classList.add(`card-${index + 1}`);
     card.setAttribute("image-id", imageObj.id);
     card.onclick = () => setupCardFlip(card);
@@ -96,6 +107,7 @@ function setupCardFlip(card) {
         c.classList.add("is-matched");
         c.classList.remove("is-flipped");
       });
+      checkEndGame();
     } else {
       increaseWrongTries();
       flippedCards.forEach((c) => {
@@ -113,4 +125,23 @@ function setupCardFlip(card) {
 function increaseWrongTries() {
   wrongTries++;
   document.querySelector(".wrong-tries").textContent = wrongTries;
+}
+
+function checkEndGame() {
+  if (document.querySelectorAll(".is-matched").length === cardsCount) {
+    if (wrongTries <= 5) score = maxScore - Math.pow(5, wrongTries);
+    else if (wrongTries <= 8)
+      score = maxScore - Math.pow(5, 5 + (wrongTries - 5) * 0.2);
+    else if (wrongTries <= 19)
+      score = maxScore - Math.pow(5, 5.6 + (wrongTries - 8) * 0.1);
+    if (score < 0) score = 0;
+    document.querySelector(".result-message .score").textContent = Math.floor(score);
+    resultMessage.style.visibility = "visible";
+    resultMessage.style.opacity = "100%";
+    resultCloseBtn.onclick = () => {
+      resultMessage.style.opacity = 0;
+      setTimeout(() => resultMessage.remove(), 500);
+    };
+    playAgainBtn.onclick = () => window.location.reload();
+  }
 }

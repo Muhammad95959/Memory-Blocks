@@ -18,7 +18,12 @@
           </div>
         </div>
         <div class="player-name">
-          <input type="text" placeholder="Player Name"/>
+          <input
+            maxlength="20"
+            type="text"
+            name="player-name"
+            placeholder="Player Name"
+          />
         </div>
         <a class="start-btn">Start Game</a>
       </div>
@@ -28,6 +33,16 @@
           <p>Wrong Tries: <span class="wrong-tries">0</span></p>
         </div>
         <div class="cards-box"></div>
+      </div>
+      <div class="result-message">
+        <a class="close-btn">x</a>
+        <div class="box">
+          <p>Your Score Is: <span class="score"></span></p>
+          <div class="buttons">
+            <a href="high-scores.html" class="high-scores-btn">High Scores</a>
+            <a class="play-again-btn">Play Again</a>
+          </div>
+        </div>
       </div>
     </section>
   </body>
