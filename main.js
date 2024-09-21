@@ -164,7 +164,7 @@ function setupResultMessageBtns() {
   highScoresBtn.onclick = () => {
     document.body.style.opacity = 0;
     setTimeout(() => {
-      window.location.href = "/high-scores.html";
+      window.location.href = "high-scores.html";
     }, 300);
   };
   playAgainBtn.onclick = () => window.location.reload();
