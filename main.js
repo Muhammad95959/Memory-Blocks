@@ -20,8 +20,10 @@ let maxScoreArr = [25000, 50000, 100000];
 let maxScore = 50000;
 
 window.addEventListener("beforeunload", () => {
-  document.body.style.visibility = "visible";
-  document.body.style.opacity = 1;
+  setTimeout(() => {
+    document.body.style.visibility = "visible";
+    document.body.style.opacity = 1;
+  }, 300);
 });
 
 fetch("database/images.json")
