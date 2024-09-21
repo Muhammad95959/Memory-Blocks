@@ -19,11 +19,16 @@ let score = 0;
 let maxScoreArr = [25000, 50000, 100000];
 let maxScore = 50000;
 
+document.addEventListener("DOMContentLoaded", () => {
+  setTimeout(() => {
+    document.body.style.visibility = "visible";
+    document.body.style.opacity = 1;
+  }, 300);
+});
+
 fetch("database/images.json")
   .then((r) => r.json())
   .then((imagesObjArr) => {
-    document.body.style.visibility = "visible";
-    document.body.style.opacity = "100%";
     const randomImagesObjArr = getRandomImages(imagesObjArr);
     setupOverlayScreen(imagesObjArr);
     setupCardsBox(randomImagesObjArr);
