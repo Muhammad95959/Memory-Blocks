@@ -73,7 +73,6 @@ a {
 }
 
 .overlay-screen {
-  visibility: hidden;
   position: absolute;
   top: 0;
   left: 0;
@@ -244,8 +243,8 @@ a {
 }
 
 .result-message {
-  /*visibility: hidden;*/
-  /*opacity: 0;*/
+  visibility: hidden;
+  opacity: 0;
   transition: opacity 0.5s;
   position: absolute;
   top: 50%;
