@@ -140,11 +140,8 @@ function increaseWrongTries() {
 function checkEndGame() {
   if (document.querySelectorAll(".is-matched").length === cardsCount) {
     console.log("You Win!");
-    if (wrongTries <= 5) score = maxScore - Math.pow(5, wrongTries);
-    else if (wrongTries <= 8)
-      score = Math.floor(maxScore - Math.pow(5, 5 + (wrongTries - 5) * 0.2));
-    else if (wrongTries <= 19)
-      score = Math.floor(maxScore - Math.pow(5, 5.6 + (wrongTries - 8) * 0.1));
+    if (level === 1 || level === 2) score = maxScore - wrongTries * 2500;
+    else score = maxScore - wrongTries * 4000;
     if (score < 0) score = 0;
     document.querySelector(".result-message .score").textContent =
       Math.floor(score);
