@@ -16,7 +16,6 @@ let flippedCardsCount = 0;
 let wrongTries = 0;
 let duration = 1000;
 let score = 0;
-let maxScoreArr = [25000, 50000, 100000];
 let maxScore = 50000;
 
 window.addEventListener("beforeunload", () => {
@@ -47,7 +46,6 @@ function setupOverlayScreen(imagesObjArr) {
         cardsBox.innerHTML = "";
         level = index + 1;
         cardsCount = cardsCountArr[level - 1];
-        maxScore = maxScoreArr[level - 1];
         const randomImagesObjArr = getRandomImages(imagesObjArr);
         setupCardsBox(randomImagesObjArr);
         cardsBox.style.opacity = "100%";
@@ -140,11 +138,9 @@ function increaseWrongTries() {
 function checkEndGame() {
   if (document.querySelectorAll(".is-matched").length === cardsCount) {
     console.log("You Win!");
-    if (level === 1 || level === 2) score = maxScore - wrongTries * 2500;
-    else score = maxScore - wrongTries * 4000;
+    score = 25000 * level - wrongTries * 2500;
     if (score < 0) score = 0;
-    document.querySelector(".result-message .score").textContent =
-      Math.floor(score);
+    document.querySelector(".result-message .score").textContent = score;
     resultMessage.style.visibility = "visible";
     resultMessage.style.opacity = "100%";
     const scoreObj = {
