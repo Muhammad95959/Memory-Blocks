@@ -257,6 +257,7 @@ a {
     transition: transform 0.7s;
     &.is-flipped {
       transform: rotateY(180deg);
+      pointer-events: none;
     }
     &.is-matched {
       pointer-events: none;
