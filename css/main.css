@@ -27,7 +27,8 @@
   --crust: #181926;
 }
 * {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   margin: 0;
   padding: 0;
   -webkit-tap-highlight-color: transparent;
@@ -39,6 +40,8 @@ body {
   color: var(--text);
   visibility: hidden;
   opacity: 0;
+  -webkit-transition: opacity 0.3s linear;
+  -o-transition: opacity 0.3s linear;
   transition: opacity 0.3s linear;
 }
 .container {
@@ -80,10 +83,19 @@ a {
   height: 100%;
   z-index: 1;
   background-color: rgba(36, 39, 58, 0.9);
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   .difficulty {
     margin-bottom: 40px;
     h2 {
@@ -91,9 +103,15 @@ a {
       margin-bottom: 20px;
     }
     > div {
+      display: -webkit-box;
+      display: -ms-flexbox;
       display: flex;
-      justify-content: center;
-      align-items: center;
+      -webkit-box-pack: center;
+          -ms-flex-pack: center;
+              justify-content: center;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;
       position: relative;
       gap: 25px;
       a {
@@ -101,9 +119,15 @@ a {
         width: 90px;
         height: 35px;
         border-radius: 8px;
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        justify-content: center;
-        align-items: center;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
         font-size: 16px;
         opacity: 0.6;
         cursor: pointer;
@@ -118,6 +142,8 @@ a {
         background-color: var(--red);
       }
       .selected {
+        -webkit-transition: opacity 0.5s;
+        -o-transition: opacity 0.5s;
         transition: opacity 0.5s;
         opacity: 1;
       }
@@ -137,6 +163,18 @@ a {
       color: var(--text);
       background-color: rgba(54, 58, 79, 0.7);
       text-align: center;
+      &::-webkit-input-placeholder {
+        color: var(--surface-2);
+      }
+      &::-moz-placeholder {
+        color: var(--surface-2);
+      }
+      &:-ms-input-placeholder {
+        color: var(--surface-2);
+      }
+      &::-ms-input-placeholder {
+        color: var(--surface-2);
+      }
       &::placeholder {
         color: var(--surface-2);
       }
@@ -154,16 +192,23 @@ a {
 .top-info {
   padding: 15px;
   margin: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   gap: 15px;
   font-size: 18px;
   border: 2px solid var(--mauve);
   :has(.name) {
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+       text-overflow: ellipsis;
   }
   .name {
     color: var(--flamingo);
@@ -173,6 +218,7 @@ a {
   }
 }
 
+/*ERROR: Autoprefixer CSS online error*/
 .cards-box {
   padding-left: 15px;
   padding-right: 15px;
@@ -245,19 +291,30 @@ a {
 .result-message {
   visibility: hidden;
   opacity: 0;
+  -webkit-transition: opacity 0.5s;
+  -o-transition: opacity 0.5s;
   transition: opacity 0.5s;
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
   background-color: var(--base);
   width: 400px;
   height: 200px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   border-radius: 15px;
-  box-shadow: 0 2px 10px var(--surface-0);
+  -webkit-box-shadow: 0 2px 10px var(--surface-0);
+          box-shadow: 0 2px 10px var(--surface-0);
   @media (max-width: 768px) {
     width: 300px;
   }
@@ -270,16 +327,31 @@ a {
     border-radius: 50%;
     background-color: var(--red);
     color: var(--base);
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     cursor: pointer;
   }
   .box {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     p {
       font-size: 22px;
       span {
@@ -288,9 +360,15 @@ a {
     }
     .buttons {
       margin-top: 30px;
+      display: -webkit-box;
+      display: -ms-flexbox;
       display: flex;
-      justify-content: center;
-      align-items: center;
+      -webkit-box-pack: center;
+          -ms-flex-pack: center;
+              justify-content: center;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;
       gap: 20px;
       .high-scores-btn {
         cursor: pointer;
@@ -313,9 +391,16 @@ a {
 .high-scores {
   margin-top: 40px;
   > div {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     h2 {
       margin-bottom: 20px;
       color: var(--crust);
